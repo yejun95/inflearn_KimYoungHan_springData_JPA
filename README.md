@@ -6,6 +6,8 @@
 ## ✔️ springDataJPA directory
 ### 학습 범위 : 4-1-1 - 4-1-4
 - 프로젝트 생성 및 환경 설정
+
+- jpa와 spring data jpa 간단한 멤버 생성 테스트
 <br>
 
 **➡️ 테스트 라이브러리**
@@ -36,4 +38,7 @@
 - 테스트
 <br>
 <br>
+
+### 학습 범위 : 4-2-1 - 
+- jpa를 이용한 crud -> spring data jpa로 변환
 
