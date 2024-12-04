@@ -50,4 +50,17 @@ class MemberRepositoryTest {
         assertThat(findMember).isEqualTo(m1);
     }
 
+    //인터페이스에 @Query 어노테이션을 통해 쿼리 직접 실행
+    @Test
+    public void testQuery() {
+        Member m1 = new Member("AAA",10);
+        Member m2 = new Member("BBB",20);
+
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        List<Member> result = memberRepository.findUser("AAA", 10);
+        assertThat(result.get(0)).isEqualTo(m1);
+    }
+
 }
