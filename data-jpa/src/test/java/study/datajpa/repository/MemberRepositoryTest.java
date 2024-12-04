@@ -8,8 +8,10 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import study.datajpa.entity.Member;
 
+import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -32,6 +34,20 @@ class MemberRepositoryTest {
         // then
         Assertions.assertThat(findMember.getId()).isEqualTo(savedMember.getId());
         Assertions.assertThat(findMember.getUsername()).isEqualTo(savedMember.getUsername());
+    }
+
+    //인터페이스에 @Query 어노테이션을 통해 NamedQuery 등록하여 사용
+    @Test
+    public void namedQuery() {
+        Member m1 = new Member("AAA",10);
+        Member m2 = new Member("BBB",20);
+
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        List<Member> result = memberRepository.findByUsername("AAA");
+        Member findMember = result.get(0);
+        assertThat(findMember).isEqualTo(m1);
     }
 
 }
