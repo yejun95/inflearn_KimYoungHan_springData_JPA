@@ -235,6 +235,7 @@ class MemberRepositoryTest {
         List<Member> findMember = memberRepository.findLockByUsername("member1");
     }
 
+    //커스텀 인터페이스
     @Test
     public void callCustom() {
         List<Member> result = memberRepository.findMemberCustom();
