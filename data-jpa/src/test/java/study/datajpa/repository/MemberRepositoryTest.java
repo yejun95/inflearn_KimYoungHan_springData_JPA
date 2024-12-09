@@ -209,4 +209,29 @@ class MemberRepositoryTest {
             System.out.println("member.getTeam() = " + member.getTeam().getName());
         }
     }
+
+    //JPA Hint
+    @Test
+    public void queryHint() {
+        Member member = new Member("member1", 10);
+        memberRepository.save(member);
+        em.flush();
+        em.clear();
+
+        Member findMember = memberRepository.findReadOnlyByUsername("member1");
+        findMember.setUsername("member2");
+
+        em.flush();
+    }
+
+    //JPA Lock
+    @Test
+    public void lock() {
+        Member member = new Member("member1", 10);
+        memberRepository.save(member);
+        em.flush();
+        em.clear();
+
+        List<Member> findMember = memberRepository.findLockByUsername("member1");
+    }
 }
